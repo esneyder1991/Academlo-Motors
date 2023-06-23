@@ -1,4 +1,4 @@
-//configuracion dotenv
+//configuracion dotenv para la implementación de las variables de entorno
 require('dotenv').config();
 
 //! este paso es posterior y complementarior a este: hacer la conexión y sincronización en el server
