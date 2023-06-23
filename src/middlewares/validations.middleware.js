@@ -50,20 +50,13 @@ exports.repairValidation = [
     .isDate()
     .withMessage('Invalid date format'),
   body('motorsNumber')
-    .isEmpty()
+    .notEmpty()
     .withMessage('motorNumber cannot be empty')
-    .matches(/^([A-Z]{3})\s(\d{2})\s([A-Z]{1})$/)
-    .withMessage(
-      'The license plate you are looking for does not exist'
-    ),
-  body('description').isEmpty,
+    .isLength({ min: 6 })
+    .withMessage('motorsNumber must be at least 6 characters long'),
+  body('description').notEmpty().withMessage('Date cannot be empty'),
   validFields,
-]; //En esta expresión regular, ^([A-Z]{3})\s(\d{2})\s([A-Z]{1})$:
-// ^ y $ son anclas que indican que la expresión regular debe coincidir con toda la cadena.
-// ([A-Z]{3}) representa tres letras mayúsculas consecutivas.
-// \s representa un espacio en blanco.
-// (\d{2}) representa dos dígitos consecutivos.
-// ([A-Z]{1}) representa una letra mayúscula.
+];
 
 exports.updateUserValidation = [
   body('currentPassword')

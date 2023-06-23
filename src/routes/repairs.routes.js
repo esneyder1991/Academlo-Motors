@@ -9,10 +9,13 @@ const repairsMiddleware = require('./../middlewares/repairs.middleware');
 
 const router = express.Router();
 
-router.route('/').get(repairsController.findRepairs).post(
-  // validationsMiddleware.repairValidation,
-  repairsController.createRepair
-);
+router
+  .route('/')
+  .get(repairsController.findRepairs)
+  .post(
+    validationsMiddleware.repairValidation,
+    repairsController.createRepair
+  );
 
 router
   .route('/:id')
