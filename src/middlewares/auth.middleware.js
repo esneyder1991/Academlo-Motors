@@ -64,3 +64,17 @@ exports.protectAccountOwner = catchAsync(async (req, res, next) => {
   next();
 });
 // De ahora en adelante para proteger un endpoint se va a utilizar el protectAccountOwner y al cual se le necesita proveer el usuario en sesión(sessionUser) y el usuario al que se le quiere cambiar la contraseña(user) a traves de la request.
+
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.sessionUser.role)) {
+      return next(
+        new AppError(
+          'You do not have permission to perform this action!',
+          403
+        )
+      );
+    }
+    next();
+  };
+};

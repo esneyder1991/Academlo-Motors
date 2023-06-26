@@ -6,6 +6,10 @@ const handleCastError23505 = () =>
     'Duplicate field value: please use another value',
     400
   );
+const handleJWTExpiredError = () =>
+  new AppError('Your token has expired!, Please login again');
+const handleJWTError = () =>
+  new AppError('Invalid Token, Please login again!', 401);
 
 const sendErrorDev = (err, res) => {
   logger.info(err);
@@ -46,7 +50,11 @@ const globalErrorHandler = (err, req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
     let error = err;
 
-    if (error.parent.code === '23505') error = handleCastError23505();
+    if (error.parent?.code === '23505')
+      error = handleCastError23505();
+    if (error.name === 'TokenExpiredError')
+      error = handleJWTExpiredError();
+    if (error.name === 'JsonWebTokenError') error = handleJWTError();
 
     sendErrorProd(error, res);
   }

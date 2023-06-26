@@ -1,6 +1,8 @@
 //configuracion dotenv para la implementación de las variables de entorno
 require('dotenv').config();
 
+const initModel = require('./models/initModels');
+
 //! este paso es posterior y complementarior a este: hacer la conexión y sincronización en el server
 const { db } = require('./database/config');
 
@@ -11,6 +13,9 @@ const app = require('./app');
 db.authenticate()
   .then(() => console.log('Database authenticated ✌'))
   .catch((err) => console.log(err));
+
+initModel();
+
 //sincronización
 db.sync()
   .then(() => console.log('Database Synced 👏'))

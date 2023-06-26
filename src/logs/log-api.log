@@ -15,3 +15,12 @@
 [2023-06-21T23:55:41.016Z] info Incorrect password undefined:undefined
 [2023-06-22T20:48:54.060Z] info jwt expired undefined:undefined
 [2023-06-22T21:43:40.999Z] info You do not own this account undefined:undefined
+[2023-06-25T21:25:42.470Z] info You are not logged in!, Please log in to get access undefined:undefined
+[2023-06-25T21:26:52.138Z] info jwt expired undefined:undefined
+[2023-06-25T21:28:44.785Z] info Incorrect email or password undefined:undefined
+[2023-06-25T21:44:50.855Z] info You do not have permission to perform this action! undefined:undefined
+[2023-06-25T21:46:21.851Z] info You do not have permission to perform this action! undefined:undefined
+[2023-06-25T22:13:27.388Z] info Invalid Token, Please login again! undefined:undefined
+[2023-06-25T22:14:56.008Z] info invalid signature undefined:undefined
+[2023-06-26T01:19:49.389Z] info You are not logged in!, Please log in to get access undefined:undefined
+[2023-06-26T03:22:43.199Z] info You are not logged in!, Please log in to get access undefined:undefined

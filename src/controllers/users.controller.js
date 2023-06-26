@@ -48,6 +48,8 @@ exports.updateUser = catchAsync(async (req, res, next) => {
 
   const { user } = req;
 
+  const { id } = req.sessionUser;
+
   const resp = await user.update({ name, email });
 
   //? 4.2 ENVIAR LA RESPUESTA AL CLIENTE
@@ -60,6 +62,7 @@ exports.updateUser = catchAsync(async (req, res, next) => {
 
 exports.deleteUser = catchAsync(async (req, res, next) => {
   const { user } = req;
+  const { id } = req.sessionUser;
   //! actualizar el producto encontrado y actualizar el status a false
   await user.update({ status: 'unavailable' }); //eliminacion logica
   //await user.destroy() para eliminacion fisica

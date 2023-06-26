@@ -29,6 +29,7 @@ const Repair = db.define('repairs', {
     defaultValue: 'pending',
   },
   userId: {
+    //lave foranea siempre en camelcase y termina en Id
     type: DataTypes.INTEGER,
     allowNull: false,
   },

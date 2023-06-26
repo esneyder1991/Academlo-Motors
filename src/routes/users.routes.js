@@ -5,9 +5,14 @@ const usersController = require('../controllers/users.controller');
 
 //Middleware
 const userMiddleware = require('./../middlewares/users.middleware');
+const authMiddleware = require('./../middlewares/auth.middleware');
 
 const router = express.Router();
 // Estas rutas son para obtener todos los productos  y vienen del app y van a su respectivo archivo controlador: user.controller
+
+//Esto protege todas las rutas de autenticación subsiguiente
+// router.use(authMiddleware.protect);
+
 router
   .route('/')
   .get(usersController.findUsers)
@@ -17,7 +22,15 @@ router
 router
   .route('/:id')
   .get(userMiddleware.validUser, usersController.findUser)
-  .patch(userMiddleware.validUser, usersController.updateUser)
-  .delete(userMiddleware.validUser, usersController.deleteUser);
+  .patch(
+    authMiddleware.protect,
+    userMiddleware.validUser,
+    usersController.updateUser
+  )
+  .delete(
+    authMiddleware.protect,
+    userMiddleware.validUser,
+    usersController.deleteUser
+  );
 
 module.exports = router;

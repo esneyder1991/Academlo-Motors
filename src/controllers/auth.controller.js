@@ -106,7 +106,7 @@ exports.renew = catchAsync(async (req, res, next) => {
   if (!user) {
     return next(new AppError('User not found', 404));
   }
-
+  //generar el token
   const token = await generateJWT(id);
   return res.status(200).json({
     status: 'success',
